@@ -1,0 +1,13 @@
+---
+
+tasks:
+  - name: Create a linked clone of rhel10 template with id 999
+    community.general.proxmox:
+      node: heimdall.akuadora.net
+      api_user: root@pam
+      api_password: "{{ heimdall_root }}"
+      api_host: heimdall.digitalpimp.nl
+      clone: 999
+      hostname: "{{ HostnameVar }}"
+
+...
