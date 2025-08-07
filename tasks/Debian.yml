@@ -1,6 +1,6 @@
 ---
 
-- name: Ensure a clone of rhel10 template with id 999
+- name: Ensure a new clone of rhel10 template with id 999
   community.general.proxmox_kvm:
     node: heimdall
     api_user: root@pam
