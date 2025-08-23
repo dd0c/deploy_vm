@@ -1,14 +1,16 @@
 ---
 
-- name: Ensure a new clone of rhel10 template with id 999
+- name: Create a new clone of rhel10 template with id 999
   community.general.proxmox_kvm:
-    node: heimdall
+    node: hera
     api_user: root@pam
-    api_password: "{{ heimdall_root }}"
-    api_host: heimdall.digitalpimp.nl
+    api_password: "{{ hera_root }}"
+    api_host: hera.doctert.net
     clone: rhel10
     full: true
-    storage: "{{ StorageVar }}"
-    name: "{{ HostnameVar }}"
+    storage: local-zfs
+    name: "{{ HostNameVar }}"
+  when: inventory_hostname == "hera"
+
 
 ...
