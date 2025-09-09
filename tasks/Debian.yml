@@ -1,16 +1,16 @@
 ---
 
-- name: Create a new clone of rhel10 template with id 999
+- name: Create a new clone of template with id 999
   community.general.proxmox_kvm:
-    node: hera
-    api_user: root@pam
-    api_password: "{{ hera_root }}"
-    api_host: hera.doctert.net
-    clone: rhel10
+    node: "{{ proxmox_node | default('hera') }}"
+    api_user: "{{ proxmox_api_user | default('root@pam') }}"
+    api_password: "{{ proxmox_api_password | default(hera_root) }}"
+    api_host: "{{ proxmox_api_host | default('hera.doctert.net') }}"
+    clone: "{{ proxmox_template_id | default('999') }}"
     full: true
-    storage: local-zfs
+    storage: "{{ proxmox_storage | default('local-zfs') }}"
     name: "{{ HostNameVar }}"
-  when: inventory_hostname == "hera"
+  when: inventory_hostname == "{{ proxmox_node | default('hera') }}"
 
 
 ...
