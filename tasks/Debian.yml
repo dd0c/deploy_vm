@@ -1,12 +1,12 @@
 ---
 
 - name: Create a new clone of template with id 999
-  community.general.proxmox_kvm:
+  community.proxmox.proxmox_kvm:
     node: "{{ proxmox_node | default('hera') }}"
     api_user: "{{ proxmox_api_user | default('root@pam') }}"
     api_password: "{{ proxmox_api_password | default(hera_root) }}"
     api_host: "{{ proxmox_api_host | default('hera.doctert.net') }}"
-    clone: "{{ proxmox_template_id | default('999') }}"
+    clone: "{{ proxmox_template_id | default('rhel10') }}"
     full: true
     storage: "{{ proxmox_storage | default('local-zfs') }}"
     name: "{{ HostNameVar }}"
